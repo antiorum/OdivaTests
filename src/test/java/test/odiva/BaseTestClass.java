@@ -15,12 +15,13 @@ import java.util.Set;
 import static junit.framework.TestCase.assertEquals;
 
 public class BaseTestClass {
-
+    // модификаторы доступа где.
     WebDriver driver;
     WebDriverWait wait;
 
     @Before
     public void start() throws InterruptedException {
+        // Путь вынести в константу в начало класса.
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\leel\\AppData\\Local\\Microsoft\\WindowsApps\\chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
@@ -31,6 +32,7 @@ public class BaseTestClass {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(2));
 
+        // Тоже вынести в константу.
         driver.get("https://odiva.ru");
     }
 

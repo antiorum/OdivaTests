@@ -23,6 +23,7 @@ public class TestWithAuthenticate extends BaseTestClass {
 
     @Test
     public void positiveAuth() throws InterruptedException {
+        // таймоут используется в двух местах, вынести в константу. Подумать над использованием механизмов фреймоворка вместо Thread.Sleep
         Thread.sleep(3000);
         String actual = driver.findElement(By.xpath("//div[@class='profile__name']")).getText();
         String expected = "Tester";

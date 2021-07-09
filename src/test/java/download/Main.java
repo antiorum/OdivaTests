@@ -11,6 +11,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Мы вроде договаривались, что не будем демонстрировать всем твое пристрастие к яою. Убрать в другой проект.
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {

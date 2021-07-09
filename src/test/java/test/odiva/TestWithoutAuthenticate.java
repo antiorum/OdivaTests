@@ -17,6 +17,7 @@ public class TestWithoutAuthenticate extends BaseTestClass {
     @Test
     public void cookiesCountTest() {
         int actual = driver.manage().getCookies().size();
+        // Переименовать для понятности.
         int expected = 15;
         assertEquals(expected, actual);
     }
@@ -27,6 +28,7 @@ public class TestWithoutAuthenticate extends BaseTestClass {
         list.add(driver.findElement(By.id("header")));
         list.add(driver.findElement(By.id("page-content-wrap")));
         list.add(driver.findElement(By.id("footer")));
+        // Переименовать для понятности.
         int expected = 3;
         assertEquals(expected, list.size());
     }
@@ -34,6 +36,7 @@ public class TestWithoutAuthenticate extends BaseTestClass {
     @Test
     public void menuPartCountTest() {
         List<WebElement> list = driver.findElements(By.xpath("//nav//ul[contains(@class,'menu-items_lvl1')]/li"));
+        // Переименовать для понятности.
         int expected = 11;
         assertEquals(expected, list.size());
     }
@@ -42,6 +45,7 @@ public class TestWithoutAuthenticate extends BaseTestClass {
     public void menuSectionTest() {
         chooseMenuSection();
         String actual = driver.getCurrentUrl();
+        // Здесь и ниже вынести общую часть путь в константу. Конкатенировать при необходимости.
         String expected = "https://odiva.ru/catalog/nogti/";
         assertEquals(expected, actual);
     }
@@ -83,6 +87,7 @@ public class TestWithoutAuthenticate extends BaseTestClass {
     public void addToBasketTest() {
         fillBasket();
         int actual = Integer.parseInt(driver.findElement(By.xpath("//div[@data-type='basket']//span[@class='num products-count']")).getAttribute("innerText"));
+        // Переименовать для понятности.
         int expected = 2;
         assertEquals(expected, actual);
     }
@@ -93,6 +98,7 @@ public class TestWithoutAuthenticate extends BaseTestClass {
         driver.get("https://odiva.ru/personal/cart/");
         WebElement remove = driver.findElement(By.xpath("(//div[@class='product-list']//div[@class='delete-wrap'])[1]"));
         remove.click();
+        // Использовать механизмы фреймворка, если получится.
         Thread.sleep(1000);
         String actual = driver.findElement(By.xpath("(//div[@data-tab='incart'])[1]")).getText();
         String expected = "В КОРЗИНЕ (1 )";
@@ -113,11 +119,13 @@ public class TestWithoutAuthenticate extends BaseTestClass {
                 .build()
                 .perform();
         int actual = Integer.parseInt(driver.findElement(By.xpath("//div[@data-type='fav']//span[@class='num products-count']")).getAttribute("innerText"));
+        // Переименовать для понятности.
         int expected = 1;
         assertEquals(expected, actual);
     }
 
     private void chooseMenuSection() {
+        // final тут лишний. Убрать в начало класса.
         final int MENUSECTION = 4;
         WebElement choice = driver.findElement(By.xpath("(//nav//ul[contains(@class,'menu-items_lvl1')]/li)[" + MENUSECTION + "]"));
         choice.click();
